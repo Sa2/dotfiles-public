@@ -1,0 +1,54 @@
+# .bash_profile
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+
+# Bash completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# User specific environment and startup programs
+#[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+
+
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
+. `brew --prefix`/etc/profile.d/z.sh
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+#export PATH=/usr/local/bin:/Users/Sa2/.rbenv/shims:/Users/Sa2/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+
+source ~/enhancd/init.sh
+#source ~/.nvm/nvm.sh
+# 最新版を使う
+#nvm use node
+
+# GOENV
+export GOENV_ROOT=$HOME/.goenv
+export PATH=$GOENV_ROOT/bin:$PATH
+eval "$(goenv init -)"
+
+# GOLANG
+export GOENV_DISABLE_GOPATH=1
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+export GO111MODULE=on
+
+if [ -f ~/.appenv.sh ]; then
+  source ~/.appenv.sh
+fi
+
+export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export KUBECONFIG=${HOME}/.kube/config-jupiter kubectl get all
+
+export PATH="/usr/local/sbin:$PATH"
